@@ -1,6 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-72 -72 144 144">
-  <!-- Isotipo actual del manual de marca. Reemplazar por el nuevo logo cuando esté listo. -->
+  <!-- Isotipo provisorio (hexágono con cubo). Reemplazar por el nuevo logo cuando esté listo. -->
   <path fill="#8BD2F6" d="M0,-70 60.6,-35 36.4,-21 0,-42 -36.4,-21 -60.6,-35Z"/>
   <path fill="#05577B" d="M-60.6,-35 -36.4,-21 -36.4,21 0,42 0,70 -60.6,35Z"/>
   <path fill="#3BA2DB" d="M60.6,-35 60.6,35 0,70 0,42 36.4,21 36.4,-21Z"/>
+  <polygon points="0,-24 20.8,-12 0,0 -20.8,-12" fill="#8BD2F6"/>
+  <polygon points="-20.8,-12 0,0 0,24 -20.8,12" fill="#05577B"/>
+  <polygon points="0,0 20.8,-12 20.8,12 0,24" fill="#3BA2DB"/>
 </svg>

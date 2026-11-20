@@ -72,9 +72,12 @@ h1, h2, h3 { color: var(--negro); line-height: 1.15; margin: 0 0 .5em; font-weig
 .stats { display: flex; gap: 36px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
 .stats b { display: block; font-size: 1.9rem; color: var(--azul-osc); font-weight: 900; }
 .stats span { font-size: .9rem; color: var(--gris-osc); }
-.hero__art img { width: 100%; max-width: 340px; margin-inline: auto; animation: flota 5s ease-in-out infinite; }
-@keyframes flota { 50% { transform: translateY(-8px); } }
-@media (prefers-reduced-motion: reduce) { .hero__art img { animation: none; } html { scroll-behavior: auto; } }
+.hero__art svg { width: 100%; max-width: 360px; margin-inline: auto; display: block; overflow: visible; }
+.hero__cubo { transition: transform .35s ease-out; }
+.hero__flota { animation: flota 4s ease-in-out infinite; }
+@keyframes flota { 50% { transform: translateY(-5px); } }
+.hero__art svg:hover .hero__flota { animation-duration: 1.6s; }
+@media (prefers-reduced-motion: reduce) { .hero__flota { animation: none; } .hero__cubo { transition: none; } html { scroll-behavior: auto; } }
 
 /* Secciones */
 .sec { padding: 88px 0; }
@@ -120,9 +123,22 @@ h1, h2, h3 { color: var(--negro); line-height: 1.15; margin: 0 0 .5em; font-weig
 /* Sugerencias */
 .sec--azul { background: var(--azul-osc); color: var(--blanco); }
 .sec--azul .sec__t { color: var(--blanco); }
-.sug { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.sug { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: start; }
+.sec--azul .tag { color: var(--azul-claro); }
+.testers { display: grid; gap: 12px; margin: 24px 0 10px; }
+.tester { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,.08); border: 1px solid rgba(139,210,246,.45); border-radius: 12px; padding: 14px; }
+.tester img { width: 48px; height: 48px; border-radius: 12px; flex: none; }
+.tester div { flex: 1; }
+.tester b { display: block; }
+.tester span { font-size: .9rem; opacity: .85; }
+.tester .btn { white-space: nowrap; }
+.sug__nota { font-size: .85rem; opacity: .8; margin: 0; }
+.sug__form { background: rgba(0,0,0,.18); border-radius: var(--radio); padding: 24px; }
+.sug__form h3 { color: var(--blanco); font-size: 1.3rem; margin: 0 0 .3em; }
+.sug__form > p { margin: 0 0 16px; opacity: .9; }
 .sug__form label { display: block; font-weight: var(--titulos); color: var(--blanco); }
-.sug__form textarea { width: 100%; margin: 8px 0 14px; border: 0; border-radius: 10px; padding: 14px; font: inherit; resize: vertical; color: var(--negro); }
+.sug__form select, .sug__form textarea { display: block; width: 100%; margin: 8px 0 14px; border: 0; border-radius: 10px; padding: 12px 14px; font: inherit; color: var(--negro); background: var(--blanco); }
+.sug__form textarea { resize: vertical; }
 .err { color: var(--azul-claro); font-weight: var(--titulos); margin: -6px 0 12px; font-size: .9rem; }
 
 /* Nosotros */
@@ -132,16 +148,33 @@ h1, h2, h3 { color: var(--negro); line-height: 1.15; margin: 0 0 .5em; font-weig
 .valores b { display: block; color: var(--azul-osc); font-size: 1.15rem; }
 .valores span { color: var(--gris-osc); }
 
+.lema { font-weight: 900; font-style: italic; text-transform: uppercase; color: var(--azul-osc); font-size: 1.25rem; line-height: 1.35; letter-spacing: .02em; margin: 0 0 18px; }
+.resena { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; align-items: center; background: var(--gris-1); border: 1px solid var(--borde); border-radius: var(--radio); padding: 16px 20px; margin: 0 0 18px; }
+.resena__nota { grid-row: span 2; font-size: 2.2rem; font-weight: 900; color: var(--negro); line-height: 1; text-align: center; }
+.resena__est { display: block; font-size: .85rem; color: #f4b400; letter-spacing: 2px; margin-top: 4px; }
+.resena p { margin: 0; font-size: .95rem; }
+.resena .btn { justify-self: start; }
+
+/* Historia */
+.hist__head { display: flex; align-items: center; gap: 18px; margin-bottom: .5em; }
+.hist__head .sec__t { margin: 0; }
+.hist__logo { width: 84px; height: auto; flex: none; }
+
 /* Galería */
 .galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .galeria img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; background: var(--blanco); transition: transform .2s; }
 .galeria img:hover { transform: scale(1.03); }
+.galeria img.ancha { grid-column: span 2; aspect-ratio: auto; height: 0; min-height: 100%; }
 
 /* Contacto */
 .contacto { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .ct { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 28px 16px; border: 1px solid var(--borde); border-radius: var(--radio); text-decoration: none; color: var(--negro); transition: border-color .2s; text-align: center; }
 .ct:hover { border-color: var(--azul); }
-.ct__ico { font-size: 1.8rem; }
+/* Íconos de contacto dentro de un hexágono (la forma del logo). Íconos: Tabler Icons, licencia MIT */
+.ct__ico { display: grid; place-items: center; width: 56px; height: 64px; margin-bottom: 8px; background: var(--azul);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); transition: background .2s, transform .2s; }
+.ct__ico svg { width: 26px; height: 26px; fill: none; stroke: var(--blanco); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+a.ct:hover .ct__ico { background: var(--azul-osc); transform: translateY(-3px); }
 .ct b { color: var(--azul-osc); }
 .redes { display: flex; justify-content: center; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
 .redes a { text-decoration: none; font-weight: var(--titulos); padding: .5em 1.2em; border-radius: 999px; background: var(--gris-1); border: 1px solid var(--borde); }
@@ -166,9 +199,13 @@ h1, h2, h3 { color: var(--negro); line-height: 1.15; margin: 0 0 .5em; font-weig
   .hero { padding: 40px 0 56px; }
   .hero__in, .apps, .caso, .sug, .nos { grid-template-columns: 1fr; }
   .hero__art { order: -1; }
-  .hero__art img { max-width: 150px; }
+  .hero__art svg { max-width: 160px; }
   .galeria { grid-template-columns: repeat(2, 1fr); }
   .contacto { grid-template-columns: 1fr; }
   .sec { padding: 64px 0; }
+  .tester { flex-wrap: wrap; }
+  .tester .btn { width: 100%; text-align: center; }
+  .sug__form { padding: 20px; }
   .caso { padding: 24px; }
+  .galeria img.ancha { height: auto; min-height: 0; aspect-ratio: 2 / 1; }
 }
