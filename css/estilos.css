@@ -105,19 +105,35 @@ h1, h2, h3 { color: var(--negro); line-height: 1.15; margin: 0 0 .5em; font-weig
 .app__quote span { font-style: normal; font-weight: var(--texto); font-size: .85rem; color: var(--gris-osc); }
 .app .btn { margin-top: auto; text-align: center; }
 
-/* Proyecto entregado: degradé oscuro como la variable cuadrada oscura del manual */
-.caso { margin-top: 24px; display: grid; grid-template-columns: 1.6fr 1fr; gap: 32px; align-items: center; border-radius: var(--radio); padding: 32px;
-  background: linear-gradient(180deg, var(--gris-osc) 0%, var(--negro) 60%); color: #e3e5e6; }
-.caso h3 { color: var(--blanco); font-size: 1.5rem; }
-.caso .tag { color: var(--azul-claro); }
-.caso .app__feat li { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); color: var(--blanco); }
-.pdf { position: relative; background: var(--blanco); width: 170px; aspect-ratio: 1 / 1.35; margin-inline: auto; border-radius: 6px; padding: 18px 16px; transform: rotate(-4deg); box-shadow: 10px 12px 0 var(--azul); }
-.pdf__h { height: 14px; width: 60%; background: var(--azul-osc); border-radius: 3px; margin-bottom: 18px; }
-.pdf__row { display: flex; gap: 10px; margin-bottom: 12px; }
-.pdf__row i { height: 8px; background: var(--gris-2); border-radius: 3px; flex: 1; }
-.pdf__row i:last-child { flex: .5; background: var(--azul-claro); }
-.pdf__tot { height: 12px; width: 45%; margin: 22px 0 0 auto; background: var(--negro); border-radius: 3px; }
-.pdf span { position: absolute; bottom: 12px; left: 16px; font-size: .7rem; font-weight: 900; color: var(--azul-osc); }
+/* Proyecto entregado: PetroExcel, tarjeta grande como las de las apps, con demo animada */
+.caso { margin-top: 24px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; border: 1px solid var(--borde); border-radius: var(--radio); padding: 36px; background: var(--blanco); transition: box-shadow .2s; }
+.caso:hover { box-shadow: 0 12px 32px rgba(5,87,123,.14); }
+.caso h3 { font-size: 1.6rem; }
+.caso__mods { margin: 18px 0 10px; font-weight: var(--titulos); font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gris-osc); }
+.mods { list-style: none; padding: 0; margin: 0 0 18px; display: flex; gap: 12px; flex-wrap: wrap; }
+.mods li { display: flex; align-items: center; gap: 10px; padding: 8px 14px 8px 10px; border: 1px solid var(--borde); border-radius: 12px; background: var(--gris-1); font-weight: var(--titulos); font-size: .95rem; transition: transform .2s, border-color .2s; }
+.mods li:hover { transform: translateY(-3px); border-color: var(--azul); }
+.mods img { width: 34px; height: 34px; object-fit: contain; }
+.demo { position: relative; display: grid; grid-template-columns: 1fr 1.15fr; gap: 16px; align-items: center; background: linear-gradient(180deg, var(--gris-1), var(--gris-2)); border-radius: var(--radio); padding: 22px; min-height: 340px; }
+.demo__form { background: var(--blanco); border-radius: 12px; padding: 16px; box-shadow: 0 6px 18px rgba(0,0,0,.08); font-size: .8rem; }
+.demo__t { margin: 0 0 10px; font-weight: 900; color: var(--azul-osc); }
+.demo__form label { display: block; color: var(--gris-osc); margin-bottom: 8px; }
+.demo__form label span { display: block; height: 28px; margin-top: 2px; border: 1px solid var(--borde); border-radius: 6px; padding: 3px 8px; color: var(--negro); font-weight: var(--titulos); font-size: .9rem; }
+.demo__form label span.activo { border-color: var(--azul); box-shadow: 0 0 0 3px rgba(59,162,219,.2); }
+.demo__btn { width: 100%; margin-top: 4px; border: 0; border-radius: 999px; padding: 8px; background: var(--azul-osc); color: var(--blanco); font: inherit; font-weight: var(--titulos); font-size: .8rem; transition: transform .15s, background .15s; }
+.demo__btn.click { transform: scale(.94); background: var(--azul); }
+.demo__pdf { position: relative; background: var(--blanco); border-radius: 6px; padding: 18px 14px; box-shadow: 8px 10px 0 var(--azul); font-size: .7rem; transform: rotate(2deg) translateY(16px); opacity: .35; transition: transform .6s, opacity .6s; }
+.demo.listo .demo__pdf { transform: rotate(-2deg); opacity: 1; }
+.demo__tagpdf { position: absolute; top: -10px; right: 12px; background: #c0392b; color: #fff; font-weight: 900; font-size: .7rem; padding: 2px 8px; border-radius: 4px; }
+.demo__h { margin: 0; font-weight: 900; font-size: .95rem; color: var(--azul-osc); }
+.demo__n { margin: 2px 0 10px; color: var(--gris-osc); }
+.demo__pdf table { width: 100%; border-collapse: collapse; text-align: center; }
+.demo__pdf th { background: var(--azul-osc); color: #fff; font-weight: var(--titulos); padding: 4px 2px; font-size: .62rem; }
+.demo__pdf td { border: 1px solid var(--borde); padding: 6px 2px; font-weight: var(--titulos); transition: background .4s; }
+.demo__pdf td.nuevo { background: rgba(139,210,246,.45); }
+.demo__firma { margin: 18px 0 0 auto; width: 55%; text-align: center; color: var(--gris-osc); }
+.demo__firma i { display: block; height: 14px; border-bottom: 1.5px solid var(--negro); margin-bottom: 3px; background: radial-gradient(ellipse at 40% 80%, transparent 55%, transparent 56%); }
+.demo__otra { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); border: 0; background: var(--blanco); color: var(--azul-osc); font: inherit; font-size: .8rem; font-weight: var(--titulos); padding: 6px 14px; border-radius: 999px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.12); }
 .dev { text-align: center; margin-top: 36px; }
 
 /* Sugerencias */
@@ -132,7 +148,9 @@ h1, h2, h3 { color: var(--negro); line-height: 1.15; margin: 0 0 .5em; font-weig
 .tester b { display: block; }
 .tester span { font-size: .9rem; opacity: .85; }
 .tester .btn { white-space: nowrap; }
-.sug__nota { font-size: .85rem; opacity: .8; margin: 0; }
+.sug__nota { margin-top: 18px; background: rgba(255,255,255,.12); border: 1px solid var(--azul-claro); border-radius: 12px; padding: 14px 18px; font-size: 1.05rem; }
+.sug__nota b { display: block; color: var(--azul-claro); margin-bottom: 4px; }
+.sug__nota ul { margin: 0; padding-left: 1.2em; }
 .sug__form { background: rgba(0,0,0,.18); border-radius: var(--radio); padding: 24px; }
 .sug__form h3 { color: var(--blanco); font-size: 1.3rem; margin: 0 0 .3em; }
 .sug__form > p { margin: 0 0 16px; opacity: .9; }
@@ -148,7 +166,7 @@ h1, h2, h3 { color: var(--negro); line-height: 1.15; margin: 0 0 .5em; font-weig
 .valores b { display: block; color: var(--azul-osc); font-size: 1.15rem; }
 .valores span { color: var(--gris-osc); }
 
-.lema { font-weight: 900; font-style: italic; text-transform: uppercase; color: var(--azul-osc); font-size: 1.25rem; line-height: 1.35; letter-spacing: .02em; margin: 0 0 18px; }
+.lema { font-weight: 900; font-style: italic; text-transform: uppercase; color: var(--azul); font-size: 1.25rem; line-height: 1.35; letter-spacing: .02em; margin: 0 0 18px; }
 .resena { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; align-items: center; background: var(--gris-1); border: 1px solid var(--borde); border-radius: var(--radio); padding: 16px 20px; margin: 0 0 18px; }
 .resena__nota { grid-row: span 2; font-size: 2.2rem; font-weight: 900; color: var(--negro); line-height: 1; text-align: center; }
 .resena__est { display: block; font-size: .85rem; color: #f4b400; letter-spacing: 2px; margin-top: 4px; }
@@ -156,7 +174,8 @@ h1, h2, h3 { color: var(--negro); line-height: 1.15; margin: 0 0 .5em; font-weig
 .resena .btn { justify-self: start; }
 
 /* Historia */
-.hist__head { display: flex; align-items: center; gap: 18px; margin-bottom: .5em; }
+.hist__head { display: flex; align-items: center; gap: 32px; margin-bottom: 24px; }
+#historia .sec__sub { max-width: none; }
 .hist__head .sec__t { margin: 0; }
 .hist__logo { width: 84px; height: auto; flex: none; }
 
@@ -207,5 +226,8 @@ a.ct:hover .ct__ico { background: var(--azul-osc); transform: translateY(-3px); 
   .tester .btn { width: 100%; text-align: center; }
   .sug__form { padding: 20px; }
   .caso { padding: 24px; }
+  .demo { grid-template-columns: 1fr; }
+  .hist__head { gap: 18px; }
+  .hist__logo { width: 64px; }
   .galeria img.ancha { height: auto; min-height: 0; aspect-ratio: 2 / 1; }
 }

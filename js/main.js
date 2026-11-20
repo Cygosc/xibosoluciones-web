@@ -43,5 +43,59 @@ if (cubo && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   hero.addEventListener('mouseleave', () => { cubo.style.transform = ''; });
 }
 
-// Año del pie
-document.getElementById('anio').textContent = new Date().getFullYear();
+// Año del pie y años desde 2017 (se actualizan solos)
+const hoy = new Date().getFullYear();
+document.getElementById('anio').textContent = hoy;
+document.getElementById('anios').textContent = (hoy - 2017) + ' años';
+
+// Demo de PetroExcel: carga valores inventados y "genera" el certificado
+const demo = document.getElementById('demo');
+if (demo) {
+  const campos = [...demo.querySelectorAll('.demo__form label span')];
+  const celdas = [...demo.querySelectorAll('.demo__pdf td')];
+  const btn = demo.querySelector('.demo__btn');
+  const otra = demo.querySelector('.demo__otra');
+  const espera = ms => new Promise(r => setTimeout(r, ms));
+  let corriendo = false;
+
+  const reiniciar = () => {
+    campos.forEach(c => { c.textContent = ''; c.classList.remove('activo'); });
+    celdas.forEach(c => { c.textContent = '—'; c.classList.remove('nuevo'); });
+    demo.classList.remove('listo');
+  };
+  const final = () => {
+    campos.forEach((c, i) => { c.textContent = c.dataset.v; celdas[i].textContent = c.dataset.v; });
+    demo.classList.add('listo');
+  };
+
+  async function correr() {
+    if (corriendo) return;
+    corriendo = true; otra.hidden = true; reiniciar();
+    await espera(500);
+    for (const c of campos) {
+      c.classList.add('activo');
+      for (const letra of c.dataset.v) { c.textContent += letra; await espera(110); }
+      await espera(200);
+      c.classList.remove('activo');
+    }
+    btn.classList.add('click'); await espera(200); btn.classList.remove('click');
+    demo.classList.add('listo');
+    for (let i = 0; i < celdas.length; i++) {
+      await espera(250);
+      celdas[i].textContent = campos[i].dataset.v;
+      celdas[i].classList.add('nuevo');
+    }
+    await espera(800);
+    celdas.forEach(c => c.classList.remove('nuevo'));
+    otra.hidden = false; corriendo = false;
+  }
+
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    final();
+  } else {
+    new IntersectionObserver((entradas, obs) => {
+      if (entradas[0].isIntersecting) { correr(); obs.disconnect(); }
+    }, { threshold: .5 }).observe(demo);
+    otra.addEventListener('click', correr);
+  }
+}

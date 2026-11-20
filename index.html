@@ -39,17 +39,17 @@
 <section id="inicio" class="hero">
   <div class="wrap hero__in">
     <div>
-      <p class="tag">Antes Xibo3D Impresiones · desde 2017</p>
+      <p class="tag">Apps hechas en Argentina</p>
       <h1>Apps que resuelven<br><span>problemas reales.</span></h1>
-      <p class="lead">Somos un equipo chico de Buenos Aires. Detectamos problemas del día a día y los convertimos en aplicaciones simples, gratis para descargar.</p>
+      <p class="lead">Creamos apps para las cosas que te complican el día: tus gastos, los cortes de calle, tu auto y hasta un buen rato de juego. Simples, útiles y gratis para descargar.</p>
       <div class="hero__cta">
         <a href="#apps" class="btn">Ver nuestras apps</a>
-        <a href="#sugerencias" class="btn btn--ghost">Sumate como tester</a>
+        <a href="#sugerencias" class="btn btn--ghost">Probá las apps nuevas</a>
       </div>
       <ul class="stats">
         <li><b>4</b><span>apps propias</span></li>
         <li><b>4,7★</b><span>PesoTrack en Play Store</span></li>
-        <li><b>2017</b><span>creando cosas</span></li>
+        <li><b id="anios">9 años</b><span>creando soluciones</span></li>
       </ul>
     </div>
     <div class="hero__art" aria-hidden="true">
@@ -72,7 +72,7 @@
 <section id="apps" class="sec">
   <div class="wrap">
     <h2 class="sec__t">Nuestras apps</h2>
-    <p class="sec__sub">Cada una nació de un problema concreto. Descargalas gratis y contanos qué te parecen.</p>
+    <p class="sec__sub">Cada app nació de un problema real: ordenar tus gastos, esquivar un corte de calle, entender qué le pasa a tu auto o simplemente divertirte. Son gratis, livianas y pensadas para el día a día argentino. Descargalas y contanos qué te parecen.</p>
 
     <div class="apps">
 
@@ -149,25 +149,42 @@
       </article>
     </div>
 
-    <!-- Proyecto entregado -->
+    <!-- Proyecto entregado: PetroExcel. La demo usa datos inventados y no muestra a la empresa. -->
     <article class="caso">
       <div class="caso__txt">
         <p class="tag">Proyecto entregado</p>
-        <h3>PetroExcel: comprobantes para la industria petrolera</h3>
-        <p>Una empresa del sector petrolero completaba sus comprobantes de laboratorio a mano. Desarrollamos un sistema web donde cada usuario carga sus valores y obtiene el comprobante en PDF, listo para imprimir, con su numeración e historial. Hoy lo usan varias personas por día.</p>
+        <h3>PetroExcel: certificados de laboratorio para la industria petrolera</h3>
+        <p>Un laboratorio del sector petrolero completaba sus certificados de análisis a mano. Desarrollamos un sistema web donde cada usuario carga los valores de la muestra y obtiene el certificado en PDF, con su numeración, firma e historial. Hoy lo usan varias personas por día.</p>
+        <p class="caso__mods">Módulos del sistema</p>
+        <ul class="mods">
+          <li><img src="assets/petro/yacimientos.png" alt="" width="40" height="35">Yacimientos</li>
+          <li><img src="assets/petro/mercurio.png" alt="" width="40" height="39">Mercurio</li>
+          <li><img src="assets/petro/glicol.png" alt="" width="32" height="40">Glicol</li>
+        </ul>
         <ul class="app__feat">
-          <li>Valores dinámicos</li><li>PDF automático</li><li>Varios usuarios</li>
+          <li>Valores dinámicos</li><li>PDF automático</li><li>Varios usuarios</li><li>Historial</li>
         </ul>
       </div>
-      <div class="caso__art" aria-hidden="true">
-        <div class="pdf">
-          <div class="pdf__h"></div>
-          <div class="pdf__row"><i></i><i></i></div>
-          <div class="pdf__row"><i></i><i></i></div>
-          <div class="pdf__row"><i></i><i></i></div>
-          <div class="pdf__tot"></div>
-          <span>PDF</span>
+      <div class="demo" id="demo" aria-label="Demostración animada: se cargan valores y se genera el certificado en PDF">
+        <div class="demo__form">
+          <p class="demo__t">Nueva muestra</p>
+          <label>Densidad a 15 °C<span data-v="0,852"></span></label>
+          <label>Temperatura °C<span data-v="15"></span></label>
+          <label>°API<span data-v="34,6"></span></label>
+          <label>% Agua libre<span data-v="0,20"></span></label>
+          <button type="button" class="demo__btn" tabindex="-1">Generar PDF</button>
         </div>
+        <div class="demo__pdf">
+          <span class="demo__tagpdf">PDF</span>
+          <p class="demo__h">Certificado de Análisis</p>
+          <p class="demo__n">Certificado N° 0000000124</p>
+          <table>
+            <tr><th>Densidad</th><th>Temp.</th><th>°API</th><th>% Agua</th></tr>
+            <tr><td data-c="0">—</td><td data-c="1">—</td><td data-c="2">—</td><td data-c="3">—</td></tr>
+          </table>
+          <div class="demo__firma"><i></i><span>Laboratorio</span></div>
+        </div>
+        <button type="button" class="demo__otra" hidden>Ver de nuevo ↻</button>
       </div>
     </article>
 
@@ -181,22 +198,25 @@
 
     <!-- Testers: cuando una app salga de prueba, borrá su tarjeta. Si no queda ninguna, borrá todo este bloque <div class="sug__test">. -->
     <div class="sug__test">
-      <p class="tag">Programa de testers</p>
+      <p class="tag">Antes del lanzamiento</p>
       <h2 class="sec__t">Probá nuestras apps antes que nadie</h2>
-      <p>Estamos por lanzar dos apps nuevas. Sumate como tester gratis: las usás antes que todos y nos ayudás a dejarlas listas.</p>
+      <p>Estamos por lanzar dos apps nuevas y buscamos personas que las usen antes que nadie y nos cuenten qué mejorar. Es gratis y sin compromiso.</p>
       <div class="testers">
         <div class="tester">
           <img src="assets/apps/cortes-icon.png" alt="" width="48" height="48">
           <div><b>¿Qué se corta en CABA?</b><span>Cortes de calle en un mapa</span></div>
-          <a class="btn btn--blanco btn--sm" href="https://wa.me/5491164583428?text=Hola!%20Quiero%20ser%20tester%20de%20%C2%BFQu%C3%A9%20se%20corta%20en%20CABA%3F.%20Mi%20mail%20de%20Google%20Play%20es%3A%20" target="_blank" rel="noopener">Quiero ser tester</a>
+          <a class="btn btn--blanco btn--sm" href="https://wa.me/5491164583428?text=Hola!%20Quiero%20probar%20antes%20del%20lanzamiento%20la%20app%20%C2%BFQu%C3%A9%20se%20corta%20en%20CABA%3F.%20Mi%20mail%20de%20Google%20Play%20es%3A%20" target="_blank" rel="noopener">Quiero probarla</a>
         </div>
         <div class="tester">
           <img src="assets/apps/relojes-icon.png" alt="" width="48" height="48">
           <div><b>Relojes ELM327</b><span>Los datos de tu auto en el celular</span></div>
-          <a class="btn btn--blanco btn--sm" href="https://wa.me/5491164583428?text=Hola!%20Quiero%20ser%20tester%20de%20Relojes%20ELM327.%20Mi%20mail%20de%20Google%20Play%20es%3A%20" target="_blank" rel="noopener">Quiero ser tester</a>
+          <a class="btn btn--blanco btn--sm" href="https://wa.me/5491164583428?text=Hola!%20Quiero%20probar%20antes%20del%20lanzamiento%20la%20app%20Relojes%20ELM327.%20Mi%20mail%20de%20Google%20Play%20es%3A%20" target="_blank" rel="noopener">Quiero probarla</a>
         </div>
       </div>
-      <p class="sug__nota">Necesitás un celular Android y el mail de tu cuenta de Google Play.</p>
+      <div class="sug__nota">
+        <b>Para probarlas necesitás:</b>
+        <ul><li>Un celular Android</li><li>El mail de tu cuenta de Google Play</li></ul>
+      </div>
     </div>
 
     <!-- Comentarios sobre las apps -->
@@ -277,9 +297,9 @@
       <a class="ct" href="mailto:xibo3d@gmail.com">
         <span class="ct__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"/><path d="M3 7l9 6l9 -6"/></svg></span><b>Mail</b><span>xibo3d@gmail.com</span>
       </a>
-      <div class="ct">
+      <a class="ct" href="https://www.google.com/maps/search/?api=1&amp;query=Xibo3D" target="_blank" rel="noopener">
         <span class="ct__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></svg></span><b>Ubicación</b><span>CABA, Buenos Aires</span>
-      </div>
+      </a>
     </div>
     <div class="redes">
       <!-- CAMBIAR: poné acá los links finales de cada red cuando las renombres -->
