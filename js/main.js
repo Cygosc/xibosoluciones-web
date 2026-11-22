@@ -10,25 +10,17 @@ nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   boton.setAttribute('aria-expanded', false);
 }));
 
-// Comentarios sobre las apps: abre WhatsApp con la app elegida y el texto escrito
-const WHATSAPP = '5491164583428';
-const form = document.getElementById('form-sug');
-const app = form.querySelector('select');
-const idea = form.querySelector('textarea');
-const appErr = document.getElementById('app-err');
-const err = document.getElementById('sug-err');
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const texto = idea.value.trim();
-  appErr.hidden = !!app.value;
-  err.hidden = !!texto;
-  if (!app.value) { app.focus(); return; }
-  if (!texto) { idea.focus(); return; }
-  const msg = 'Hola Xibo Soluciones! Tengo un comentario sobre ' + app.value + ': ' + texto;
-  window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
-});
-app.addEventListener('change', () => { appErr.hidden = true; });
-idea.addEventListener('input', () => { err.hidden = true; });
+// Botón "Compartir" de cada app: en el celular abre el menú de compartir (WhatsApp, Instagram...);
+// en la PC, si no hay menú, abre WhatsApp con el link listo.
+document.querySelectorAll('.compartir').forEach(b => b.addEventListener('click', async () => {
+  const titulo = b.dataset.titulo, url = b.dataset.url;
+  const texto = 'Mirá esta app, te puede servir: ' + titulo;
+  if (navigator.share) {
+    try { await navigator.share({ title: titulo, text: texto, url }); } catch (e) { /* cancelado */ }
+  } else {
+    window.open('https://wa.me/?text=' + encodeURIComponent(texto + ' ' + url), '_blank', 'noopener');
+  }
+}));
 
 // Cubo de la portada: sigue un poco al mouse
 const cubo = document.querySelector('.hero__cubo');
@@ -36,17 +28,25 @@ const hero = document.querySelector('.hero');
 if (cubo && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   hero.addEventListener('mousemove', e => {
     const r = hero.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width - .5) * 14;
-    const y = ((e.clientY - r.top) / r.height - .5) * 14;
+    const x = ((e.clientX - r.left) / r.width - .5) * 22;
+    const y = ((e.clientY - r.top) / r.height - .5) * 22;
     cubo.style.transform = `translate(${x}px, ${y}px)`;
   });
   hero.addEventListener('mouseleave', () => { cubo.style.transform = ''; });
 }
 
-// Año del pie y años desde 2017 (se actualizan solos)
-const hoy = new Date().getFullYear();
-document.getElementById('anio').textContent = hoy;
-document.getElementById('anios').textContent = (hoy - 2017) + ' años';
+// Barra fija de descarga: aparece después de la portada y se esconde al llegar al cierre "Descargalas gratis"
+const barra = document.getElementById('barra');
+const cierre = document.querySelector('.cierre');
+if (barra && 'IntersectionObserver' in window) {
+  let pasoPortada = false, enCierre = false;
+  const act = () => barra.classList.toggle('visible', pasoPortada && !enCierre);
+  new IntersectionObserver(([e]) => { pasoPortada = !e.isIntersecting; act(); }).observe(document.querySelector('.hero'));
+  if (cierre) new IntersectionObserver(([e]) => { enCierre = e.isIntersecting || e.boundingClientRect.top < 0; act(); }).observe(cierre);
+}
+
+// Año del pie (se actualiza solo)
+document.getElementById('anio').textContent = new Date().getFullYear();
 
 // Demo de PetroExcel: carga valores inventados y "genera" el certificado
 const demo = document.getElementById('demo');

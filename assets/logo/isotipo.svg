@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-72 -72 144 144">
-  <!-- Isotipo provisorio (hexágono con cubo). Reemplazar por el nuevo logo cuando esté listo. -->
-  <path fill="#8BD2F6" d="M0,-70 60.6,-35 36.4,-21 0,-42 -36.4,-21 -60.6,-35Z"/>
-  <path fill="#05577B" d="M-60.6,-35 -36.4,-21 -36.4,21 0,42 0,70 -60.6,35Z"/>
-  <path fill="#3BA2DB" d="M60.6,-35 60.6,35 0,70 0,42 36.4,21 36.4,-21Z"/>
-  <polygon points="0,-24 20.8,-12 0,0 -20.8,-12" fill="#8BD2F6"/>
-  <polygon points="-20.8,-12 0,0 0,24 -20.8,12" fill="#05577B"/>
-  <polygon points="0,0 20.8,-12 20.8,12 0,24" fill="#3BA2DB"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="530 -8 246 276">
+  <!-- Isotipo del logo Xibo Soluciones (hexágono con cubo), tomado del archivo del diseñador -->
+  <polyline fill="#8bd2f6" points="593.18 95.37 653.02 60.86 712.85 95.37 765.52 64.96 653.02 0 540.51 64.96"/>
+  <polyline fill="#3ba2db" points="712.85 95.37 712.85 164.46 653.02 199.03 653.02 259.82 765.52 194.87 765.52 194.87 765.52 64.96"/>
+  <polyline fill="#05577b" points="540.51 64.96 540.51 194.87 653.02 259.82 653.02 199.03 593.18 164.46 593.18 95.37"/>
+  <polygon fill="#3ba2db" points="679.21 114.79 679.21 145.03 653.02 160.16 653.02 129.91 679.21 114.79"/>
+  <polygon fill="#8bd2f6" points="679.21 114.77 679.21 114.79 653.02 129.91 626.83 114.79 626.83 114.77 653.02 99.68 679.21 114.77"/>
+  <polygon fill="#05577b" points="653.02 129.91 653.02 160.16 626.83 145.03 626.83 114.79 653.02 129.91"/>
 </svg>
